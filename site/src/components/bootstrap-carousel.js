@@ -17,6 +17,7 @@ export default function BootStrapCarousel({ data }) {
 								heigh: 400
 							}}
 							src={node && node.Image && node.Image.childImageSharp &&
+								node.Image.childImageSharp.resize &&
 								node.Image.childImageSharp.resize.src}
 							alt={node.Title}
 						/>

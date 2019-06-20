@@ -12,9 +12,9 @@ Run following commands
 
 cd strapi
 
-npm i
+npm install
 
-strap start
+npm start
 
 # Running Gatsy project
 

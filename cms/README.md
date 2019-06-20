@@ -10,7 +10,7 @@ strapi start
 
 
 __Run gatsby project__
-cd blog-site
+cd site
 npm install
 npm start
 
