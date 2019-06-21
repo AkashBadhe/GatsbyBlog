@@ -5,31 +5,38 @@ import Reactmarkdown from "react-markdown"
 import styles from './blog.module.scss'
 import { TweenLite } from "gsap/TweenMax";
 // import render from './../../../../cms/admin/admin/src/renderApp';
+import { width } from '@material-ui/system';
+import { hideLoginErrorsInput } from './../../../../cms/plugins/users-permissions/admin/src/containers/AuthPage/actions';
 
 export default class BlogCards extends Component {
 
 	constructor(props) {
 		super(props);
 		// reference to the DOM node
-		this.myElement = null;
+		this.myElements = [];
 		// reference to the animation
 		this.myTween = null;
 	}
 
 	componentDidMount() {
 		// use the node ref to create the animation
-		this.myTween = TweenLite.from(this.myElement, 1, { x: 1000, y: 0 });
+		this.myTween = TweenLite.from(this.myElements, 2, {
+			opacity: 0,
+			x: 1000,
+			y: 100,
+			rotation: 180
+		});
 	}
 
 	render() {
 		const { cards } = this.props
 		let card
 		return (
-			<div className={styles.card__container} ref={card => this.myElement = card}>
+			<div className={styles.card__container} >
 				{
-					cards && cards.map(node => {
+					cards && cards.map((node, i) => {
 						card = node.node ? node.node : node
-						return (<Card className={styles.card__custom} >
+						return (<Card className={styles.card__custom} ref={card => this.myElements.push(card)}>
 							<Card.Img variant="top" src={card && card.image && card.image.childImageSharp.resize.src} />
 							<Link to={card.id && card.id.toString().toLowerCase().includes('article_') ? `${card.id}` : `Article_${card.id}`}
 								className={styles.card__link}>
