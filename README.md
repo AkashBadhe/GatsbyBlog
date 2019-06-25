@@ -1,5 +1,7 @@
 # Installing global modules
 
+Download and install Node js from https://nodejs.org/en/download/
+
 npm install -g gatsby-cli
 
 npm install netlify-cli -g
