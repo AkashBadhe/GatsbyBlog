@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "navlink",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "default": "",
+      "type": "string"
+    },
+    "OpenInNewTab": {
+      "default": false,
+      "type": "boolean"
+    },
+    "Location": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

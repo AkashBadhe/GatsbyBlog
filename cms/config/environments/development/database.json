@@ -2,13 +2,18 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-hook-bookshelf",
+      "connector": "strapi-hook-mongoose",
       "settings": {
-        "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "client": "mongo",
+        "host": "ds247377.mlab.com",
+        "port": 47377,
+        "database": "strapi_with_mongo_db",
+        "username": "admin",
+        "password": "Askext@003"
       },
       "options": {
-        "useNullAsDefault": true
+        "authenticationDatabase": "strapi_with_mongo_db",
+        "ssl": false
       }
     }
   }
