@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import logo from '../images/logo.svg'
 
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 

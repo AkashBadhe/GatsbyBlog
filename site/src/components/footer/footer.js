@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './footer.css'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faCoffee, facebookSquare } from '@fortawesome/free-solid-svg-icons'
@@ -47,11 +46,11 @@ function Footer(props) {
 						<div className=" col-sm-4 col-md  col-12 col">
 							<h5 className="headin5_amrc col_white_amrc pt2">Follow us</h5>
 							{/*headin5_amrc ends here*/}
-							<ul className="footer_ul2_amrc">
-								<li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
-								<li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
-								<li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
-							</ul>
+							{/* <ul className="footer_ul2_amrc">
+								<li><a href="javascript();"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="javascript();">https://www.lipsum.com/</a></p></li>
+								<li><a href="javascript();"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="javascript();">https://www.lipsum.com/</a></p></li>
+								<li><a href="javascript();"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="javascript();">https://www.lipsum.com/</a></p></li>
+							</ul> */}
 							{/*footer_ul2_amrc ends here*/}
 						</div>
 					</div>
@@ -66,7 +65,7 @@ function Footer(props) {
 						<li><a href="http://webenlance.com">Contact</a></li>
 					</ul>
 					{/*foote_bottom_ul_amrc ends here*/}
-					<p className="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
+					<p className="text-center">Copyright @2017 | Designed With by Your Company Name</p>
 					<ul className="social_footer_ul">
 						{/* <FontAwesomeIcon icon="spinner" size="6x" />
 						<FontAwesomeIcon icon={facebookSquare} /> */}

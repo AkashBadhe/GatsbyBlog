@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "gatsby"
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import Reactmarkdown from "react-markdown"
 import styles from './blog.module.scss'
 import { TweenLite } from "gsap/TweenMax";
-// import render from './../../../../cms/admin/admin/src/renderApp';
-import { width } from '@material-ui/system';
-import { hideLoginErrorsInput } from './../../../../cms/plugins/users-permissions/admin/src/containers/AuthPage/actions';
 
 export default class BlogCards extends Component {
 

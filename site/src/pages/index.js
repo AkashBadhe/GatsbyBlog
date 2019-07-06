@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import "../styles/global.css"
 import Layout from "../layouts/one-col-layout";
 import BootStrapCarousel from '../components/bootstrap-carousel'
-import { Badge, Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import BlogCards from '../components/cards/blog-cards'
 
 const IndexPage = ({ data }) => {
@@ -25,16 +25,15 @@ export const query = graphql`
 query {allStrapiCarousel {
       edges {
         node {
-          Title
+          title
           subtitle
-          Image {
+          image {
             childImageSharp {
               resize(width: 1200, height: 400){
                 src
               }
             }
           }
-          description
         }
       }
     }
