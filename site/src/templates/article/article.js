@@ -7,11 +7,10 @@ import Master from '../../layouts/master'
 
 const ArticleTemplate = ({ data }) => (
 	<Master>
+		<div className={styles.image__container}>
+			<Img fluid={data.strapiArticle.image.childImageSharp.fluid} />
+		</div>
 		<div className={styles.page__container}>
-			<div className={styles.image__container}>
-				<Img fluid={data.strapiArticle.image.childImageSharp.fluid} />
-			</div>
-
 			<div className={`${styles.articleContainer} container`}>
 				<div className={styles.article__page}>
 					<div>
