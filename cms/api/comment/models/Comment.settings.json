@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "article",
+    "name": "comment",
     "description": ""
   },
   "options": {
@@ -12,14 +12,6 @@
     "Title": {
       "default": "",
       "type": "string"
-    },
-    "Body": {
-      "default": "",
-      "type": "text"
-    },
-    "PublishedOn": {
-      "default": "",
-      "type": "date"
     }
   }
 }

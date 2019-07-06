@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Article.js service
+ * Comment.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all articles.
+   * Promise to fetch all comments.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('article', params);
+    const filters = strapi.utils.models.convertParams('comment', params);
     // Select field to populate.
-    const populate = Article.associations
+    const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Article
+    return Comment
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an article.
+   * Promise to fetch a/an comment.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Article.associations
+    const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Article
-      .findOne(_.pick(params, _.keys(Article.schema.paths)))
+    return Comment
+      .findOne(_.pick(params, _.keys(Comment.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count articles.
+   * Promise to count comments.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('article', params);
+    const filters = strapi.utils.models.convertParams('comment', params);
 
-    return Article
+    return Comment
       .countDocuments()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an article.
+   * Promise to add a/an comment.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Article.associations.map(ast => ast.alias));
-    const data = _.omit(values, Article.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Comment.associations.map(ast => ast.alias));
+    const data = _.omit(values, Comment.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Article.create(data);
+    const entry = await Comment.create(data);
 
     // Create relational data and return the entry.
-    return Article.updateRelations({ _id: entry.id, values: relations });
+    return Comment.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an article.
+   * Promise to edit a/an comment.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Article.associations.map(a => a.alias));
-    const data = _.omit(values, Article.associations.map(a => a.alias));
+    const relations = _.pick(values, Comment.associations.map(a => a.alias));
+    const data = _.omit(values, Comment.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Article.updateOne(params, data, { multi: true });
+    const entry = await Comment.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Article.updateRelations(Object.assign(params, { values: relations }));
+    return Comment.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an article.
+   * Promise to remove a/an comment.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Article.associations
+    const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Article
+    const data = await Comment
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Article.associations.map(async association => {
+      Comment.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an article.
+   * Promise to search a/an comment.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('article', params);
+    const filters = strapi.utils.models.convertParams('comment', params);
     // Select field to populate.
-    const populate = Article.associations
+    const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Article.attributes).reduce((acc, curr) => {
-      switch (Article.attributes[curr].type) {
+    const $or = Object.keys(Comment.attributes).reduce((acc, curr) => {
+      switch (Comment.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Article
+    return Comment
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)

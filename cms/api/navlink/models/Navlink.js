@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Carousel` model.
+ * Lifecycle callbacks for the `Navlink` model.
  */
 
 module.exports = {

@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "carousel",
+    "name": "navlink",
     "description": ""
   },
   "options": {
@@ -13,15 +13,13 @@
       "default": "",
       "type": "string"
     },
-    "subtitle": {
-      "default": "",
-      "type": "text"
+    "OpenInNewTab": {
+      "default": false,
+      "type": "boolean"
     },
-    "Image": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
+    "Location": {
+      "default": "",
+      "type": "string"
     }
   }
 }

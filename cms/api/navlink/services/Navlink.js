@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Carousel.js service
+ * Navlink.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all carousels.
+   * Promise to fetch all navlinks.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('carousel', params);
+    const filters = strapi.utils.models.convertParams('navlink', params);
     // Select field to populate.
-    const populate = Carousel.associations
+    const populate = Navlink.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Carousel
+    return Navlink
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an carousel.
+   * Promise to fetch a/an navlink.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Carousel.associations
+    const populate = Navlink.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Carousel
-      .findOne(_.pick(params, _.keys(Carousel.schema.paths)))
+    return Navlink
+      .findOne(_.pick(params, _.keys(Navlink.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count carousels.
+   * Promise to count navlinks.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('carousel', params);
+    const filters = strapi.utils.models.convertParams('navlink', params);
 
-    return Carousel
+    return Navlink
       .countDocuments()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an carousel.
+   * Promise to add a/an navlink.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Carousel.associations.map(ast => ast.alias));
-    const data = _.omit(values, Carousel.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Navlink.associations.map(ast => ast.alias));
+    const data = _.omit(values, Navlink.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Carousel.create(data);
+    const entry = await Navlink.create(data);
 
     // Create relational data and return the entry.
-    return Carousel.updateRelations({ _id: entry.id, values: relations });
+    return Navlink.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an carousel.
+   * Promise to edit a/an navlink.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Carousel.associations.map(a => a.alias));
-    const data = _.omit(values, Carousel.associations.map(a => a.alias));
+    const relations = _.pick(values, Navlink.associations.map(a => a.alias));
+    const data = _.omit(values, Navlink.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Carousel.updateOne(params, data, { multi: true });
+    const entry = await Navlink.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Carousel.updateRelations(Object.assign(params, { values: relations }));
+    return Navlink.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an carousel.
+   * Promise to remove a/an navlink.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Carousel.associations
+    const populate = Navlink.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Carousel
+    const data = await Navlink
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Carousel.associations.map(async association => {
+      Navlink.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an carousel.
+   * Promise to search a/an navlink.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('carousel', params);
+    const filters = strapi.utils.models.convertParams('navlink', params);
     // Select field to populate.
-    const populate = Carousel.associations
+    const populate = Navlink.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Carousel.attributes).reduce((acc, curr) => {
-      switch (Carousel.attributes[curr].type) {
+    const $or = Object.keys(Navlink.attributes).reduce((acc, curr) => {
+      switch (Navlink.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Carousel
+    return Navlink
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)
