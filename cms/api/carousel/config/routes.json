@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/carousels/:id",
+      "path": "/carousels/:_id",
       "handler": "Carousel.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/carousels/:id",
+      "path": "/carousels/:_id",
       "handler": "Carousel.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/carousels/:id",
+      "path": "/carousels/:_id",
       "handler": "Carousel.destroy",
       "config": {
         "policies": []

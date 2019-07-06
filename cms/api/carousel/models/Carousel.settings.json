@@ -1,14 +1,12 @@
 {
   "connection": "default",
-  "collectionName": "carousels",
+  "collectionName": "",
   "info": {
     "name": "carousel",
-    "description": "This will hold the information about the slide show."
+    "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "Title": {
@@ -16,10 +14,6 @@
       "type": "string"
     },
     "subtitle": {
-      "default": "",
-      "type": "text"
-    },
-    "description": {
       "default": "",
       "type": "text"
     },
