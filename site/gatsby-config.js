@@ -19,7 +19,7 @@ module.exports = {
       options: {
         apiURL: process.env.DEPLOY_URL
           ? "https://ux-bloger.herokuapp.com"
-          : "http://localhost:1337",
+          : "https://ux-bloger.herokuapp.com",
         contentTypes: [`article`, `user`, 'carousel'],
         queryLimit: 1000,
       },
